@@ -5,13 +5,13 @@
 class Dxup < Formula
   desc "Reproducible development environments with Docker and Nix"
   homepage "https://github.com/dxupsh/dxup"
-  version "0.16.0"
+  version "0.17.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/dxupsh/dxup/releases/download/v0.16.0/dxup_Darwin_x86_64.tar.gz"
-      sha256 "816c8df9c40a4580f9f56cfe1c127f3096986268b2736917a8e75598a5c35cfe"
+      url "https://github.com/dxupsh/dxup/releases/download/v0.17.0/dxup_Darwin_x86_64.tar.gz"
+      sha256 "8b9dc54a0af65918f5bb6d3c0103d7061e840631d0c77cbeb358d96db328dafa"
 
       def install
         bin.install "dxup"
@@ -22,8 +22,8 @@ class Dxup < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/dxupsh/dxup/releases/download/v0.16.0/dxup_Darwin_arm64.tar.gz"
-      sha256 "4ca4e49bc4a8838025e3c20c5e2917e59ae19866298415f72e44698301cbe8c0"
+      url "https://github.com/dxupsh/dxup/releases/download/v0.17.0/dxup_Darwin_arm64.tar.gz"
+      sha256 "97a1aa6444013234c81102c5c2811aafba8676645324aa3e0a0a25598743bf2d"
 
       def install
         bin.install "dxup"
@@ -37,8 +37,8 @@ class Dxup < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/dxupsh/dxup/releases/download/v0.16.0/dxup_Linux_x86_64.tar.gz"
-      sha256 "5f5a7699d303ebcdb974af45a9d98d9c45b3aff4e2b8e325fd656f5d336441b5"
+      url "https://github.com/dxupsh/dxup/releases/download/v0.17.0/dxup_Linux_x86_64.tar.gz"
+      sha256 "e16f2074724e8c469c31d0d7188844368107f5c8efd12c725008d2bf6ad37ccb"
       def install
         bin.install "dxup"
         bash_completion.install "docs/completions/dxup.bash" => "dxup"
@@ -48,8 +48,8 @@ class Dxup < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/dxupsh/dxup/releases/download/v0.16.0/dxup_Linux_arm64.tar.gz"
-      sha256 "e8ff021b252f8842945fb4fe0b781a94ff5fe79efc3176c793782a67dc628795"
+      url "https://github.com/dxupsh/dxup/releases/download/v0.17.0/dxup_Linux_arm64.tar.gz"
+      sha256 "702e03e77cadb5ec97a4645b526d8de45e0a033a25cd0f259138a1525e2023fc"
       def install
         bin.install "dxup"
         bash_completion.install "docs/completions/dxup.bash" => "dxup"
