@@ -5,13 +5,15 @@
 class Dxup < Formula
   desc "Reproducible development environments with Docker and Nix"
   homepage "https://github.com/dxupsh/dxup"
-  version "0.17.0"
+  version "0.18.0"
   license "MIT"
+
+  depends_on "docker" => :required
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/dxupsh/dxup/releases/download/v0.17.0/dxup_Darwin_x86_64.tar.gz"
-      sha256 "8b9dc54a0af65918f5bb6d3c0103d7061e840631d0c77cbeb358d96db328dafa"
+      url "https://github.com/dxupsh/dxup/releases/download/v0.18.0/dxup_Darwin_x86_64.tar.gz"
+      sha256 "c711e0f5712ae9ed931cf385221489f8322863203ecca56002548e48203002fe"
 
       def install
         bin.install "dxup"
@@ -22,8 +24,8 @@ class Dxup < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/dxupsh/dxup/releases/download/v0.17.0/dxup_Darwin_arm64.tar.gz"
-      sha256 "97a1aa6444013234c81102c5c2811aafba8676645324aa3e0a0a25598743bf2d"
+      url "https://github.com/dxupsh/dxup/releases/download/v0.18.0/dxup_Darwin_arm64.tar.gz"
+      sha256 "7392dd5d48b13896a16a692077640c4bcf1bb7bd4a8abdbbbb2e20f97dacc5a2"
 
       def install
         bin.install "dxup"
@@ -37,8 +39,8 @@ class Dxup < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/dxupsh/dxup/releases/download/v0.17.0/dxup_Linux_x86_64.tar.gz"
-      sha256 "e16f2074724e8c469c31d0d7188844368107f5c8efd12c725008d2bf6ad37ccb"
+      url "https://github.com/dxupsh/dxup/releases/download/v0.18.0/dxup_Linux_x86_64.tar.gz"
+      sha256 "b36a67e43cd5a1fbdb30425d7940ecb900f6e40261ce4474114f8f34c0cd3c31"
       def install
         bin.install "dxup"
         bash_completion.install "docs/completions/dxup.bash" => "dxup"
@@ -48,8 +50,8 @@ class Dxup < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/dxupsh/dxup/releases/download/v0.17.0/dxup_Linux_arm64.tar.gz"
-      sha256 "702e03e77cadb5ec97a4645b526d8de45e0a033a25cd0f259138a1525e2023fc"
+      url "https://github.com/dxupsh/dxup/releases/download/v0.18.0/dxup_Linux_arm64.tar.gz"
+      sha256 "0a5fae564f15d3e868ef3102946f440660f3d7bbf96e20ecc46328426245f9e0"
       def install
         bin.install "dxup"
         bash_completion.install "docs/completions/dxup.bash" => "dxup"
@@ -58,6 +60,16 @@ class Dxup < Formula
         man1.install Dir["docs/man/*.1"]
       end
     end
+  end
+
+  def caveats
+    <<~EOS
+      dxup requires a Docker daemon. On macOS, we recommend Colima:
+        brew install colima
+
+      If you already use Docker Desktop or OrbStack:
+        dxup setup --url unix:///var/run/docker.sock
+    EOS
   end
 
   test do
